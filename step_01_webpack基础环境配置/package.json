@@ -1,0 +1,25 @@
+{
+  "name": "step-1-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env webpack-dev-server --open --mode development",
+    "build": "cross-env npm run clean && webpack --mode production",
+    "clean": "rm -rf dist && mkdir dist"
+  },
+  "author": "chrissong",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^5.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.5.1",
+    "yargs-parser": "^13.1.0"
+  }
+}
