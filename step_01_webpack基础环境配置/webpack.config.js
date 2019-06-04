@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');// html 模版插件
 const yargsParser = require('yargs-parser') //yargs-parser 模块用来获取命令行参数
 
-const argv = yargsParser(process.argv.slice(2));   // cross-env 获取当前运行环境的参数
+const argv = yargsParser(process.argv.slice(2));   // cross-env：运行跨平台设置和使用环境变量的脚本
 // console.log(argv)  //{ _: [], open: true, mode: 'development' }
 const pro = argv.mode == 'production' ? true : false;  //  区别是生产环境和开发环境
 
