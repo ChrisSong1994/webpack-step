@@ -21,16 +21,40 @@ let config = {
         rules: [
             {
                 test: /\.css$/,
-                use: [ 'style-loader', 'css-loader' ]
+                use: ['style-loader', 'css-loader', 'postcss-loader']
             },
             {
-                test: /\.m?js$/,
-                exclude: /(node_modules|bower_components)/,
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+            },
+            {
+                test: /\.less$/,
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {},
+                    },
+                ],
+            },
+            {    // babel es6转 es5
+                test: /\.js$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env']
                     }
+                }
+            }, { // eslint 检查
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                options: {
+                    // eslint options (if necessary)
                 }
             }
         ]
@@ -45,10 +69,10 @@ let config = {
         alias: {
             'src': path.join(__dirname, './src'),
         },
-        extensions: ['.js', '.css', '.json']
+        extensions: ['.js', '.css', '.json', '.less', '.scss']
     },
     devServer: {
-        port: 8080,             // 端口
+        port: 8088,             // 端口
         open: true,             // 自动打开浏览器
         hot: true,               // 开启热更新
         overlay: true, // 浏览器页面上显示错误
