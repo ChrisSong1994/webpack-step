@@ -4,5 +4,5 @@
 .image_test{
   width: 400px;
   height: 400px;
-  background: url('./asset/image/default_pic.jpg') no-repeat;
+  background: url('../image/default_pic.jpg') no-repeat;
 }

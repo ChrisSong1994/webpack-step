@@ -1,12 +1,5 @@
-const autoprefixer = require('autoprefixer')
-
 module.exports = {
-  plugins: [
-    autoprefixer({
-      browsers: [
-        // 加这个后可以出现额外的兼容性前缀
-        "> 1%"
-      ]
-    })
-  ]
+    plugins: [
+        require('autoprefixer')
+    ]
 }
