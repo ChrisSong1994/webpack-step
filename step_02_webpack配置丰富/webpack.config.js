@@ -49,13 +49,13 @@ let config = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            }, { // eslint 检查
-                test: /\.js$/,
-                exclude: /node_modules/,
+            }, 
+            {
+                test: /\.(js|jsx)$/,
+                enforce: 'pre',
                 loader: 'eslint-loader',
-                options: {
-                    // eslint options (if necessary)
-                }
+                include: path.resolve(__dirname, './src/**/*.js'),
+                exclude: /node_modules/
             }
         ]
     },
