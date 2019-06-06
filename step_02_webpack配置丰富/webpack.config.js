@@ -2,11 +2,13 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');// html 模版插件
 const yargsParser = require('yargs-parser') //yargs-parser 模块用来获取命令行参数
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const argv = yargsParser(process.argv.slice(2));   // cross-env：运行跨平台设置和使用环境变量的脚本
 // console.log(argv)  //{ _: [], open: true, mode: 'development' }
 const pro = argv.mode == 'production' ? true : false;  //  区别是生产环境和开发环境
 
+let plugins = []
 
 let config = {
     entry: {
@@ -33,12 +35,11 @@ let config = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {},
-                    },
-                ],
+                use: ['file-loader']
+            },
+            { // 增加加载字体的规则
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: ['file-loader']
             },
             {    // babel es6转 es5
                 test: /\.js$/,
@@ -49,7 +50,7 @@ let config = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            }, 
+            },
             {
                 test: /\.(js|jsx)$/,
                 enforce: 'pre',
@@ -64,6 +65,7 @@ let config = {
             template: './index.html',
             hash: true // 会在打包好的bundle.js后面加上hash串
         }),
+        new BundleAnalyzerPlugin(), // 包依赖可视化
     ],
     resolve: {
         alias: {
