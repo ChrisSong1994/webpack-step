@@ -1,9 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('./html-webpack-plugin');// html 模版插件
-const yargsParser = require('./yargs-parser') //yargs-parser 模块用来获取命令行参数
-const BundleAnalyzerPlugin = require('./webpack-bundle-analyzer').BundleAnalyzerPlugin;  // 包依赖可视化
-const MiniCssExtractPlugin = require("./mini-css-extract-plugin");// 拆分css样式的插件
+const HtmlWebpackPlugin = require('html-webpack-plugin');// html 模版插件
+const yargsParser = require('yargs-parser') //yargs-parser 模块用来获取命令行参数
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;  // 包依赖可视化
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");// 拆分css样式的插件
 
 const argv = yargsParser(process.argv.slice(2));   // cross-env：运行跨平台设置和使用环境变量的脚本
 // console.log(argv)  //{ _: [], open: true, mode: 'development' }
@@ -13,7 +13,7 @@ let plugins = []
 
 let config = {
     entry: {
-        index: './src/index.ts',    // 入口文件
+        index: './src/index.js',    // 入口文件
     },
     output: {
         filename: devMode ? '[name].js' : '[name].[chunkhash].js', // 打包后的文件名称
@@ -55,7 +55,7 @@ let config = {
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['@babel/preset-env']
+                            presets: ['@babel/preset-env','@babel/preset-react']
                         }
                     }
                 ]
@@ -65,11 +65,6 @@ let config = {
                 enforce: 'pre',
                 loader: 'eslint-loader',
                 include: path.resolve(__dirname, './src/**/*.js'),
-                exclude: /node_modules/
-            },
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
                 exclude: /node_modules/
             }
         ]

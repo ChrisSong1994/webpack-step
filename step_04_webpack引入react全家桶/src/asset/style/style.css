@@ -1,3 +1,7 @@
+@import "./less_style.less";
+@import "./sass_style.scss";
+
+
 .h4_css{
   color: blue;
 }
