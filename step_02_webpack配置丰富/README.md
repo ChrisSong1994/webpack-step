@@ -6,5 +6,4 @@
 > 4. 代码分离,分离第三方模块代码；
 > 5. js和css 分离开来； mini-css-extract-plugin
 > 6. 加入依赖可视化查看工具 webpack-bundle-analyzer；
-> 7. shim 预置依赖；
    

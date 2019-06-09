@@ -1,5 +1,5 @@
 {
-  "name": "step-1-webpack",
+  "name": "step_04_webpack",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,9 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "@types/lodash": "^4.14.134",
     "autoprefixer": "^9.6.0",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
@@ -29,7 +31,10 @@
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
+    "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.2",
+    "typescript": "^3.5.1",
     "webpack": "^4.32.2",
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.2",
@@ -37,8 +42,18 @@
     "yargs-parser": "^13.1.0"
   },
   "dependencies": {
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-router": "^5.0.1",
+    "@types/react-router-dom": "^4.3.3",
     "jquery": "^3.4.1",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "mobx": "^5.10.0",
+    "mobx-react": "^6.0.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1"
   },
   "browserslist": [
     "> 1%",
