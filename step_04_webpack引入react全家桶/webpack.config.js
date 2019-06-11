@@ -41,11 +41,7 @@ let config = {
                     'css-loader', 'postcss-loader']
             },
             {
-                test: /\.(png|jpg|gif)$/,
-                use: ['file-loader']
-            },
-            { // 增加加载字体的规则
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                test: /\.(png|jpg|gif|woff|woff2|eot|ttf|otf)$/,
                 use: ['file-loader']
             },
             {    // babel es6转 es5
