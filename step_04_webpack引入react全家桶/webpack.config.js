@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');// html 模版插件
 const yargsParser = require('yargs-parser') //yargs-parser 模块用来获取命令行参数
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;  // 包依赖可视化
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");// 拆分css样式的插件
-const OptimizeCssAssetsPlugin= require('optimize-css-assets-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');  // css 优化
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')  // js 优化
 
 const argv = yargsParser(process.argv.slice(2));   // cross-env：运行跨平台设置和使用环境变量的脚本
 // console.log(argv)  //{ _: [], open: true, mode: 'development' }
@@ -109,7 +110,24 @@ let config = {
                 }
             }
         },
-        minimizer:[
+        minimizer: [
+            // 自定义js优化配置，将会覆盖默认配置
+            new UglifyJsPlugin({
+                exclude: /\.min\.js$/, // 过滤掉以".min.js"结尾的文件，我们认为这个后缀本身就是已经压缩好的代码，没必要进行二次压缩
+                cache: true,
+                parallel: true, // 开启并行压缩，充分利用cpu
+                sourceMap: false,
+                extractComments: false, // 移除注释
+                uglifyOptions: {
+                    compress: {
+                        unused: true,
+                        drop_debugger: true
+                    },
+                    output: {
+                        comments: false
+                    }
+                }
+            }),
             // 用于优化css文件
             new OptimizeCssAssetsPlugin({
                 assetNameRegExp: /\.css$/g,
