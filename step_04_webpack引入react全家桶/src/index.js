@@ -11,3 +11,8 @@ ReactDOM.render(
     </Provider>,
     document.getElementById("app")
 )
+
+// 实现热更新
+if (module.hot) {
+    module.hot.accept();
+}

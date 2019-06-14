@@ -18,9 +18,9 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route path="/list" component={List} />
-                        <Route  component={NotFound} />
-                        // <Route path="/notFound" component={NotFound} />
-                        // <Redirect to="/notFound" />
+                        {/* <Route  component={NotFound} /> */}
+                        <Route path="/notFound" component={NotFound} />
+                        <Redirect to="/notFound" />
                     </Switch>
                 </div>
             </Router>
