@@ -13,11 +13,15 @@ class App extends React.Component {
                     <ul>
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/list">list</Link></li>
+                        <li><Link to="/404">404</Link></li>
                     </ul>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/list" component={List} />
-                    <Route path="/notFound" component={NotFound} />
-                    <Redirect to="/notFound" />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/list" component={List} />
+                        <Route  component={NotFound} />
+                        // <Route path="/notFound" component={NotFound} />
+                        // <Redirect to="/notFound" />
+                    </Switch>
                 </div>
             </Router>
         )
@@ -25,3 +29,4 @@ class App extends React.Component {
 }
 
 export default App;
+

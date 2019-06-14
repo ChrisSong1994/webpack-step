@@ -9,7 +9,13 @@ const argv = yargsParser(process.argv.slice(2));   // cross-env：运行跨平�
 // console.log(argv)  //{ _: [], open: true, mode: 'development' }
 const devMode = argv.mode == 'development' ? true : false;  //  区别是生产环境和开发环境
 
-let plugins = []
+let plugins = devMode ? [
+    // development
+    new webpack.HotModuleReplacementPlugin()  // 热更新，热更新不是刷新
+] : [
+    // production
+    new BundleAnalyzerPlugin() // 包依赖可视化
+]
 
 let config = {
     entry: {
@@ -51,7 +57,7 @@ let config = {
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['@babel/preset-env','@babel/preset-react']
+                            presets: ['@babel/preset-env', '@babel/preset-react']
                         }
                     }
                 ]
@@ -66,12 +72,11 @@ let config = {
         ]
     },
     plugins: [
+        ...plugins,
         new HtmlWebpackPlugin({
             template: './index.html',
             hash: true // 会在打包好的bundle.js后面加上hash串
         }),
-        // 包依赖可视化
-        new BundleAnalyzerPlugin(),
         new MiniCssExtractPlugin({
             filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
             chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash].css',

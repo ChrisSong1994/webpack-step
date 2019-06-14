@@ -45,10 +45,6 @@
     "yargs-parser": "^13.1.0"
   },
   "dependencies": {
-    "@types/react": "^16.8.19",
-    "@types/react-dom": "^16.8.4",
-    "@types/react-router": "^5.0.1",
-    "@types/react-router-dom": "^4.3.3",
     "jquery": "^3.4.1",
     "lodash": "^4.17.11",
     "mobx": "^5.10.0",
