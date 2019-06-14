@@ -4,5 +4,5 @@
 > 2. mobx 和 mobx-react 使用了修饰符 
 > >  babel-plugin-transform-decorators-legacy
 > > babel-plugin-transform-class-properties
-
+> 3. css 压缩 optimize-css-assets-webpack-plugin
    

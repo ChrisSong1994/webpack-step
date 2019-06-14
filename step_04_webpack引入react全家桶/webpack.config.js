@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');// html 模版插件
 const yargsParser = require('yargs-parser') //yargs-parser 模块用来获取命令行参数
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;  // 包依赖可视化
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");// 拆分css样式的插件
+const OptimizeCssAssetsPlugin= require('optimize-css-assets-webpack-plugin');
 
 const argv = yargsParser(process.argv.slice(2));   // cross-env：运行跨平台设置和使用环境变量的脚本
 // console.log(argv)  //{ _: [], open: true, mode: 'development' }
@@ -14,7 +15,7 @@ let plugins = devMode ? [
     new webpack.HotModuleReplacementPlugin()  // 热更新，热更新不是刷新
 ] : [
     // production
-    new BundleAnalyzerPlugin() // 包依赖可视化
+    new BundleAnalyzerPlugin(), // 包依赖可视化
 ]
 
 let config = {
@@ -107,7 +108,22 @@ let config = {
                     priority: 10,
                 }
             }
-        }
+        },
+        minimizer:[
+            // 用于优化css文件
+            new OptimizeCssAssetsPlugin({
+                assetNameRegExp: /\.css$/g,
+                cssProcessorOptions: {
+                    safe: true,
+                    autoprefixer: { disable: true }, // 这里是个大坑，禁用掉cssnano对于浏览器前缀的处理。
+                    mergeLonghand: false,
+                    discardComments: {
+                        removeAll: true // 移除注释
+                    }
+                },
+                canPrint: true
+            })
+        ]
     },
     //srouce里面能看到我们写的代码，也能打断点调试代码
     devtool: devMode ? 'inline-source-map' : ''
