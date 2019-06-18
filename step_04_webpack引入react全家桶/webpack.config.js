@@ -95,7 +95,18 @@ let config = {
         open: true,             // 自动打开浏览器
         hot: true,               // 开启热更新
         overlay: true, // 浏览器页面上显示错误
-        historyApiFallback: true
+        historyApiFallback: true,
+        proxy: { //通过代理解决本地跨域
+            '/api': {
+                target: 'http://localhost:4000', // 服务端
+                changeOrigin: true,
+                ws: true,
+                pathRewrite: {
+                    '^/api': '/api'
+                }
+            }
+        }
+
     },
     //  提取公共代码
     optimization: {

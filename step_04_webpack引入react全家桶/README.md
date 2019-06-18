@@ -1,4 +1,4 @@
-### step_03_webpack引入typescript
+### step_04_webpack引入react全家桶
 
 > 1. 引入react 全家桶  @babel/preset-react
 > 2. mobx 和 mobx-react 使用了修饰符 
