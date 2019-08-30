@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+  </head>
+  <body>
+    <div id="example"></div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="./src/asset/image/favicon.ico" type="image/x-icon">
-    <title>step_02_webpack配置丰富</title>
-</head>
+    <!-- Dependencies -->
+    <script src="./node_modules/react/umd/react.development.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
 
-<body>
-    <h4 class="h4_css">step_02_webpack配置丰富</h4>
-    <h4 class="h4_less">step_02_webpack配置丰富</h4>
-    <h4 class="h4_scss">step_02_webpack配置丰富</h4>
-   <div class="image_test"></div>
-</body>
-
+    <!-- Main -->
+    <script src="./dist/bundle.js"></script>
+  </body>
 </html>
