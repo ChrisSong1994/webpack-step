@@ -1,0 +1,12 @@
+@import "./less_style.less";
+@import "./sass_style.scss";
+
+
+.h4_css{
+  color: blue;
+}
+.image_test{
+  width: 400px;
+  height: 400px;
+  background: url('../image/default_pic.jpg') no-repeat;
+}

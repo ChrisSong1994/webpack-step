@@ -95,7 +95,7 @@ let config = {
         open: true,             // 自动打开浏览器
         hot: true,               // 开启热更新
         overlay: true, // 浏览器页面上显示错误
-        historyApiFallback: true,
+        historyApiFallback: true,  // 默认加载index.html
         proxy: { //通过代理解决本地跨域
             '/api': {
                 target: 'http://localhost:4000', // 服务端

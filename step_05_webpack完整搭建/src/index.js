@@ -1,4 +1,4 @@
-import './asset/style/style'
+import './asset/style/style.css'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import App from './router'
