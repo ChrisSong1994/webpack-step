@@ -1,9 +1,6 @@
-### step_04_webpack引入react全家桶
+### step_05_webpack引入react全家桶
 
-> 1. 引入react 全家桶  @babel/preset-react
-> 2. mobx 和 mobx-react 使用了修饰符 
-> >  babel-plugin-transform-decorators-legacy
-> > babel-plugin-transform-class-properties
-> 3. css 优化 optimize-css-assets-webpack-plugin
-> 4. js 优化 uglifyjs-webpack-plugin
+> 1. 使用react lazy 懒加载机制，提高首屏加载速度
+> 2. 使用DllPlugin ，autodll-webpack-plugin 预先打包第三方插件，不会在后面开发编译重复打包
+
    
