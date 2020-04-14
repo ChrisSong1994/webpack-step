@@ -45,10 +45,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new HappyPack({
-            id:'babel',
-            loaders:['babel-loader?cacheDirectory']
-        }),
+        // new HappyPack({
+        //     id:'babel',
+        //     loaders:['babel-loader?cacheDirectory']
+        // }),
         new HtmlWebpackPlugin({
             inject: true, // will inject the main bundle to index.html
             template: path.resolve(__dirname, '../index.html'),

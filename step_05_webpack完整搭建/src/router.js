@@ -1,10 +1,11 @@
-import * as React from "react";
+import React, { PureComponent, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect, Link } from "react-router-dom";
-import Home from "src/pages/home";
-import NotFound from "./pages/NotFound"
-import List from "./pages/List"
 
-class App extends React.Component {
+const Home = lazy(() => import('src/pages/home'))
+const NotFound = lazy(() => import('src/pages/NotFound'))
+const List = lazy(() => import('src/pages/List'))
+
+class App extends PureComponent {
 
     render() {
         return (
@@ -15,13 +16,15 @@ class App extends React.Component {
                         <li><Link to="/list">list</Link></li>
                         <li><Link to="/404">404</Link></li>
                     </ul>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/list" component={List} />
-                        {/* <Route  component={NotFound} /> */}
-                        <Route path="/notFound" component={NotFound} />
-                        <Redirect to="/notFound" />
-                    </Switch>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route path="/list" component={List} />
+                            {/* <Route  component={NotFound} /> */}
+                            <Route path="/notFound" component={NotFound} />
+                            <Redirect to="/notFound" />
+                        </Switch>
+                    </Suspense>
                 </div>
             </Router>
         )
